@@ -1,4 +1,3 @@
-/* */
 const wordDictionary = {
     "array": "A data structure that holds a collection of elements, accessible by index.",
     "class": "A blueprint for creating objects in object-oriented programming.",
@@ -53,6 +52,7 @@ async function init() {
     let map = makeMap(CORRECT_WORD.toUpperCase());
     console.log(CORRECT_WORD);
     console.log(today.definition);
+
 
     document.addEventListener("keydown", function (event) {
         if (done || isLoading) {
@@ -132,7 +132,7 @@ async function commit(CORRECT_WORD, map) {
 
     //TODO check commit function.
 
-
+    loading(true);
     const response = await fetch("https://words.dev-apis.com/validate-word", {
         method: "POST",
         body: JSON.stringify(
@@ -143,6 +143,7 @@ async function commit(CORRECT_WORD, map) {
     })
     const responsedData = await response.json();
     const isItValid = responsedData.validWord;
+    console.log(false);
     console.log(isItValid);
     if (isItValid && currentGuess.length === ANSWER_LENGTH) {
         for (let i = 0; i < ANSWER_LENGTH; i++) {
